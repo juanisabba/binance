@@ -44,8 +44,6 @@ const CoinInfo = ({ coin }) => {
     setHistoricData(data.prices);
   };
 
-  console.log(coin);
-
   useEffect(() => {
     fetchHistoricData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,7 +63,7 @@ const CoinInfo = ({ coin }) => {
       <div className={classes.container}>
         {!historicData | flag===false ? (
           <CircularProgress
-            style={{ color: "gold" }}
+            style={{ color: "#FCD535" }}
             size={250}
             thickness={1}
           />

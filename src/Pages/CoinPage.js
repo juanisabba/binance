@@ -2,11 +2,11 @@ import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReactHtmlParser from "react-html-parser";
 import CoinInfo from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
 import { numberWithCommas } from "../components/CoinsTable";
 import { CryptoState } from "../CryptoContext";
+import parser from 'html-react-parser'
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -78,7 +78,7 @@ const CoinPage = () => {
 
   const classes = useStyles();
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
+  if (!coin) return <LinearProgress style={{ backgroundColor: "#FCD535" }} />;
 
   return (
     <div className={classes.container}>
@@ -93,7 +93,7 @@ const CoinPage = () => {
           {coin?.name}
         </Typography>
         <Typography variant="subtitle1" className={classes.description}>
-          {ReactHtmlParser(coin?.description.en.split(". ")[0])}.
+        {parser(coin?.description.en.split(". ")[0])}.
         </Typography>
         <div className={classes.marketData}>
           <span style={{ display: "flex" }}>

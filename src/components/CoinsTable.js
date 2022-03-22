@@ -44,7 +44,7 @@ export default function CoinsTable() {
     },
     pagination: {
       "& .MuiPaginationItem-root": {
-        color: "gold",
+        color: "#FCD535",
       },
     },
   });
@@ -64,7 +64,6 @@ export default function CoinsTable() {
   const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
-    console.log(data);
 
     setCoins(data);
     setLoading(false);
@@ -78,8 +77,8 @@ export default function CoinsTable() {
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(search) ||
-        coin.symbol.toLowerCase().includes(search)
+        coin.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+        coin.symbol.toLowerCase().includes(search.toLocaleLowerCase())
     );
   };
 
@@ -90,22 +89,22 @@ export default function CoinsTable() {
           variant="h4"
           style={{ margin: 18, fontFamily: "Montserrat" }}
         >
-          Cryptocurrency Prices by Market Cap
+          Las criptos más populares
         </Typography>
         <TextField
-          label="Search For a Crypto Currency.."
+          label="Busca criptos..."
           variant="outlined"
           style={{ marginBottom: 20, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
         />
         <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <LinearProgress style={{ backgroundColor: "#FCD535" }} />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                  {["Cripto", "Precio", "Cambio 24h", "Market Cap"].map((head) => (
                     <TableCell
                       style={{
                         color: "black",
@@ -113,7 +112,7 @@ export default function CoinsTable() {
                         fontFamily: "Montserrat",
                       }}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Cripto" ? "" : "right"}
                     >
                       {head}
                     </TableCell>
@@ -164,7 +163,7 @@ export default function CoinsTable() {
                         </TableCell>
                         <TableCell align="right">
                           {symbol}{" "}
-                          {numberWithCommas(row.current_price.toFixed(2))}
+                          {numberWithCommas(row.current_price)}
                         </TableCell>
                         <TableCell
                           align="right"

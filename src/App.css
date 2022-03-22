@@ -1,13 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap");
+::-webkit-scrollbar{
+  width: 12px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track{
+  border-radius: 10px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #cfa8a8;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+}
+
+.app__container {
+  background-image: url(./images/background.jpg);
+  min-height: 100vh;
 }
 
 a {
   text-decoration: none;
-  color: gold;
+  color: #FCD535;
 }
